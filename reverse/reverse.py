@@ -20,9 +20,9 @@ class LinkedList:
         node = Node(value)
 
         if self.head is not None:
-            node.set_next(self.head)
+            node.set_next(self.head) # node.next_node = self.head
 
-        self.head = node
+        self.head = node 
 
     def contains(self, value):
         if not self.head:
@@ -38,5 +38,29 @@ class LinkedList:
 
         return False
 
+
     def reverse_list(self, node, prev):
-        pass
+        # check if the list is empty
+        if not self.head:
+            return        
+        # initialize values
+        curr_node = node
+
+        # looping until we reach the end of the list 
+        while curr_node is not None:
+            # store the tail value in the variable nxt
+            nxt = curr_node.get_next()
+            # reverse the list
+            # overwrite the next node with the previous node
+            curr_node.set_next(prev)     
+
+            # move to next node      
+            prev = curr_node
+            curr_node = nxt
+
+        # initialize the new head
+        self.head = prev    
+
+
+
+        
